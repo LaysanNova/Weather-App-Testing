@@ -1,0 +1,43 @@
+# Node.js / Playwright
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+playwright-report/
+test-results/
+
+# TypeScript build
+dist/
+out/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example  # keep template if needed
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary / system
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Test artifacts
+screenshots/
+videos/
+allure-results/
+allure-report/

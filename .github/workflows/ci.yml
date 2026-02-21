@@ -1,8 +1,8 @@
 name: CI - Playwright Tests
 on:
-  push:
-    branches: [ main ]
   pull_request:
+    branches:
+      - main
 jobs:
   test:
     timeout-minutes: 60

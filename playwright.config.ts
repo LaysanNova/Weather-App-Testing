@@ -13,11 +13,11 @@ export default defineConfig({
   timeout: 60000,
   use: {
     baseURL: BASE_URL,
-    headless: false,
+    headless: true,
     trace: 'on-first-retry',
-    launchOptions: {
-      slowMo: 3000,
-    },
+    // launchOptions: {
+    //   slowMo: 3000,
+    // },
   },
   projects: [
     {

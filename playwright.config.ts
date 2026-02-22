@@ -13,10 +13,10 @@ export default defineConfig({
   timeout: 60000,
   use: {
     baseURL: BASE_URL,
-    headless: true,
+    headless: !!process.env.CI,
     trace: 'on-first-retry',
     // launchOptions: {
-    //   slowMo: 3000,          // slow down each action by 100ms
+    //   slowMo: 3000,
     // },
   },
   projects: [

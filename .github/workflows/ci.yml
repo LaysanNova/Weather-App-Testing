@@ -17,6 +17,11 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
+    - run: npm run lint
+    - run: npm run format:check
+    - run: npm test
+
     - name: Run Playwright tests
       env:
         ENV: dev

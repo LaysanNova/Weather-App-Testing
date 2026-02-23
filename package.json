@@ -4,12 +4,20 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.3.0",
-    "typescript": "^5.5.3"
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.1",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.56.1"
   },
   "private": true,
   "keywords": [],

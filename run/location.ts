@@ -1,13 +1,9 @@
-import { test } from '../fixtures/pages.fixture';
+import { test } from "../fixtures/pages.fixture";
 
-test('Location page title', async ({ locationPage }) => {
-   //await locationPage.verifyLoaded();
-    await locationPage.expectTitle(/Weather/);
+test("Location page title", async ({ locationPage }) => {
+  //await locationPage.verifyLoaded();
+  await locationPage.expectTitle(/Weather/);
 });
-
-
-
-
 
 // import { test, expect } from '@playwright/test';
 // import { CityPage } from '../pages/CityPage';

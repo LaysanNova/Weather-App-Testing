@@ -1,5 +1,5 @@
-import { chromium, expect } from '@playwright/test';
-import { BASE_URL } from './config/env';
+import { chromium, expect } from "@playwright/test";
+import { BASE_URL } from "./config/env";
 
 // export default async function globalSetup() {
 //     const retries = 5;
@@ -28,25 +28,20 @@ import { BASE_URL } from './config/env';
 //     await browser.close();
 // }
 
-
-
-
-
-
-import { request } from '@playwright/test';
+import { request } from "@playwright/test";
 
 export default async function globalSetup() {
-    const url = process.env.BASE_URL as string;
+  const url = process.env.BASE_URL as string;
 
-    const requestContext = await request.newContext();
+  const requestContext = await request.newContext();
 
-    const response = await requestContext.get(url);
+  const response = await requestContext.get(url);
 
-    if (!response.ok()) {
-        throw new Error(`Site is not reachable. Status: ${response.status()}`);
-    }
+  if (!response.ok()) {
+    throw new Error(`Site is not reachable. Status: ${response.status()}`);
+  }
 
-    console.log('✅ Site is awake!');
+  console.log("✅ Site is awake!");
 
-    await requestContext.dispose();
+  await requestContext.dispose();
 }

@@ -1,32 +1,31 @@
-import { defineConfig, devices } from '@playwright/test';
-import { BASE_URL } from './config/env';
+import { defineConfig, devices } from "@playwright/test";
+import { BASE_URL } from "./config/env";
 
 export default defineConfig({
-  globalSetup: require.resolve('./globalSetup'),
-  testDir: './run',
-  testMatch: '**/*.ts',
+  globalSetup: require.resolve("./globalSetup"),
+  testDir: "./run",
+  testMatch: "**/*.ts",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: "html",
   timeout: 60000,
   use: {
     baseURL: BASE_URL,
     headless: !!process.env.CI,
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
     // launchOptions: {
     //   slowMo: 3000,
     // },
   },
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
   ],
 });
-
 
 // import { defineConfig, devices } from '@playwright/test';
 // import 'dotenv/config';

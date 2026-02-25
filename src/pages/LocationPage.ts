@@ -1,10 +1,9 @@
-import { Page, expect } from "@playwright/test";
-// import { logger } from '../utils/logger';
+import { Page } from "@playwright/test";
 
 export class LocationPage {
-  constructor(private page: Page) {}
+  constructor(public page: Page) {}
 
-  async expectTitle(expected: RegExp) {
-    await expect(this.page).toHaveTitle(expected);
+  async getTitle() {
+    return this.page.title();
   }
 }

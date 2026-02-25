@@ -1,8 +1,8 @@
 import { test } from "../fixtures/pages.fixture";
+import {expect} from "@playwright/test";
 
 test("Location page title", async ({ locationPage }) => {
-  //await locationPage.verifyLoaded();
-  await locationPage.expectTitle(/Weather/);
+  await expect(locationPage.page).toHaveTitle(/Weather/);
 });
 
 // import { test, expect } from '@playwright/test';

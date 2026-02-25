@@ -1,17 +1,17 @@
-import { test as base } from '@playwright/test';
-import { logger } from '../utils/logger';
+import { test as base } from "@playwright/test";
+import { logger } from "../utils/logger";
 
-declare module '@playwright/test' {
-    interface Page {
-        logger: typeof logger;
-    }
+declare module "@playwright/test" {
+  interface Page {
+    logger: typeof logger;
+  }
 }
 
 export const test = base.extend({
-    page: async ({ page }, use) => {
-        page.logger = logger;
-        await use(page);
-    },
+  page: async ({ page }, use) => {
+    page.logger = logger;
+    await use(page);
+  },
 });
 
-export { expect } from '@playwright/test';
+export { expect } from "@playwright/test";

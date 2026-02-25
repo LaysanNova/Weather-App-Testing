@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "npx playwright test",
-    "lint": "eslint .",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

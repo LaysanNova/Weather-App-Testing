@@ -3,7 +3,7 @@ import { BASE_URL } from "./config/env";
 
 export default defineConfig({
   globalSetup: require.resolve("./globalSetup"),
-  testDir: "./run",
+  testDir: "./src/run",
   testMatch: "**/*.ts",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

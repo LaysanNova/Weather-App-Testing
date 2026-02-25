@@ -1,4 +1,4 @@
-import { test as base } from "@playwright/test";
+import { test as base } from "./base.fixture";
 import { CityPage } from "../pages/CityPage";
 import { LocationPage } from "../pages/LocationPage";
 
@@ -8,16 +8,15 @@ type PageFixtures = {
 };
 
 export const test = base.extend<PageFixtures>({
-  // ✅ Opens City page automatically
   cityPage: async ({ page }, use) => {
     const city = new CityPage(page);
     await city.navigate();
     await use(city);
   },
 
-  // ✅ Opens City page + clicks Location automatically
   locationPage: async ({ page }, use) => {
     const city = new CityPage(page);
+    page.logger.info("Opening CityPage and navigating to Location");
     await city.navigate();
     await city.clickLocation();
 

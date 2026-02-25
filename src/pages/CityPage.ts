@@ -1,4 +1,3 @@
-// pages/CityPage.ts
 import { Page, Locator } from "@playwright/test";
 
 export class CityPage {
@@ -15,18 +14,23 @@ export class CityPage {
   }
 
   async navigate() {
+    this.page.logger.debug("Navigating to City page");
     await this.page.goto(process.env.BASE_URL as string);
   }
 
   async clickLocation() {
+    this.page.logger.debug("Clicking on Location link");
     await this.locationLink.click();
   }
 
   async clickGetWeatherBtn() {
+    this.page.logger.debug("Clicking Get Weather button");
     await this.getWeatherBtn.click();
   }
 
   async getTitle(): Promise<string> {
-    return await this.page.title();
+    const title = await this.page.title();
+    this.page.logger.info(`Page title: ${title}`);
+    return title;
   }
 }

@@ -2,9 +2,9 @@ import { test, expect } from "../fixtures/pages.fixture";
 
 test("City page title", async ({ cityPage }) => {
   await cityPage.page.waitForLoadState();
-
   const title = await cityPage.getTitle();
-  expect(title).toEqual("Weather"); // change expected value
+  expect(title).toEqual("Weather");
+  cityPage.page.logger.info("Title verification passed ✅");
 });
 
 test.describe("City page content", () => {

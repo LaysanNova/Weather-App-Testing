@@ -10,9 +10,7 @@ declare module '@playwright/test' {
 export const test = base.extend({
     page: async ({ page }, use) => {
         page.logger = logger;
-        page.logger.info('=== Test started ===');
         await use(page);
-        page.logger.info('=== Test finished ===');
     },
 });
 

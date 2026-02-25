@@ -14,7 +14,7 @@ export class CityPage {
   }
 
   async navigate() {
-    this.page.logger.info('Navigating to City page');
+    this.page.logger.debug('Navigating to City page');
     await this.page.goto(process.env.BASE_URL as string);
   }
 

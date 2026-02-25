@@ -10,10 +10,8 @@ type PageFixtures = {
 export const test = base.extend<PageFixtures>({
   cityPage: async ({ page }, use) => {
     const city = new CityPage(page);
-    page.logger.info('Opening CityPage via fixture');
     await city.navigate();
     await use(city);
-    console.log('Finished CityPage fixture');
   },
 
   locationPage: async ({ page }, use) => {
@@ -24,7 +22,6 @@ export const test = base.extend<PageFixtures>({
 
     const location = new LocationPage(page);
     await use(location);
-    page.logger.info('Finished LocationPage fixture');
   },
 });
 

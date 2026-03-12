@@ -1,10 +1,8 @@
 name: Playwright Tests CI
-
+permissions:
+  contents: write
 on:
   pull_request:
-    branches: [ main ]
-
-  push:
     branches: [ main ]
 
 jobs:
@@ -47,30 +45,20 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Run Playwright tests
+      - name: Run tests
         run: npx playwright test
 
-      - name: Upload test artifacts
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: playwright-artifacts
-          path: test-results/
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline --save-dev
 
       - name: Generate Allure report
-        if: always()
-        run: npm run allure:report
+        run: |
+          allure generate allure-results --clean -o allure-report
 
-      - name: Upload Allure Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-
-      - name: Deploy Allure to GitHub Pages
-        if: github.event_name == 'push'
+      - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
+        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: allure-report

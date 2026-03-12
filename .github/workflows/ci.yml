@@ -15,23 +15,14 @@ jobs:
       BASE_URL: ${{ secrets.BASE_URL }}
 
     steps:
-      # -----------------------------
-      # Checkout code
-      # -----------------------------
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # -----------------------------
-      # Setup Node.js
-      # -----------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
-      # -----------------------------
-      # Cache npm packages
-      # -----------------------------
       - name: Cache npm
         uses: actions/cache@v3
         with:
@@ -40,9 +31,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # -----------------------------
-      # Cache Playwright browsers
-      # -----------------------------
       - name: Cache Playwright browsers
         uses: actions/cache@v3
         with:
@@ -51,88 +39,45 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-
 
-      # -----------------------------
-      # Install dependencies
-      # -----------------------------
       - name: Install dependencies
         run: npm ci --prefer-offline
 
-      # -----------------------------
-      # Install Playwright browsers
-      # -----------------------------
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # -----------------------------
-      # Lint & format check
-      # -----------------------------
       - name: Lint and format check
         run: |
           npm run lint
           npm run format:check
 
-      # -----------------------------
-      # Run Playwright tests
-      # -----------------------------
       - name: Run Playwright tests
         run: npm test
 
-      # -----------------------------
-      # Preserve Allure history
-      # -----------------------------
-      - name: Copy previous Allure history
-        if: always()
-        run: |
-          mkdir -p allure-results/history
-          if [ -d allure-history ]; then
-            cp -r allure-history/* allure-results/history/
-          fi
-        continue-on-error: true
-
-      # -----------------------------
-      # Generate Allure report
-      # -----------------------------
-      - name: Generate Allure Report
-        if: always()
-        run: npm run allure:report
-
-      # -----------------------------
-      # Save Allure history for next run
-      # -----------------------------
-      - name: Save Allure history
-        if: always()
-        run: |
-          rm -rf allure-history
-          mkdir -p allure-history
-          cp -r allure-report/history/* allure-history/ || true
-
-      # -----------------------------
-      # Upload Allure report artifact
-      # -----------------------------
-      - name: Upload Allure Report
-        if: always()
+      - name: Upload failed tests traces and videos to GitHub artefacts
         uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report/
-          retention-days: 30
-
-      # -----------------------------
-      # Attach Playwright artifacts on failure (screenshots, videos)
-      # -----------------------------
-      - name: Attach test artifacts on failure
         if: failure()
+        with:
+          name: Artefacts
+          path: target/artefact/
+          retention-days: 1
+
+      - name: Upload durations.csv
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Test Artifacts
-          path: test-results/
+          name: durations
+          path: durations.csv
+          retention-days: 1
 
-      # -----------------------------
-      # Optional: Deploy to GitHub Pages
-      # -----------------------------
-      - name: Deploy Allure Report to Github Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-report
+  deploy:
+    name: 'Deploy'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: run-tests
+    if: always()
+    steps:
+      - name: Deploy allure report to GitHub pages
+        id: deployment
+        uses: actions/deploy-pages@v4

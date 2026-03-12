@@ -9,7 +9,7 @@ on:
 
 jobs:
   tests:
-    name: Run Playwright Tests
+    name: Run Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
 

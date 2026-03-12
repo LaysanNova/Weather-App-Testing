@@ -68,9 +68,10 @@ jobs:
           name: allure-report
           path: allure-report
 
-      - name: Deploy Allure to GitHub Pages
-        if: github.event_name == 'push'
+      - name: Deploy report to Github Pages
         uses: peaceiris/actions-gh-pages@v4
+        if: always()
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
           publish_dir: allure-report

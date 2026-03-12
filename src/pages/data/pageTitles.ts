@@ -6,3 +6,4 @@ export const pageTitles = [
   // { label: 'Threads Page', key: 'threads', expectedTitle: 'Threads - Hacker News' },
   // { label: 'Welcome Page', key: 'welcome', expectedTitle: 'Welcome to Hacker News' },
 ];
+

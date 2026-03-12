@@ -50,28 +50,33 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
-      - name: Upload test artifacts
+      - name: Attach artifacts on failure
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: playwright-artifacts
+          name: Artifacts
           path: test-results/
 
-      - name: Generate Allure report
+      - name: Get Allure history
+        uses: actions/checkout@v4
         if: always()
-        run: npm run allure:report
-
-      - name: Upload Allure Report
-        if: always()
-        uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
-          name: allure-report
-          path: allure-report
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure Report with history
+        uses: simple-elf/allure-report-action@v1.9
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: allure-results
 
       - name: Deploy report to Github Pages
         uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-report
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history

@@ -1,11 +1,13 @@
 name: CI - Playwright Tests
+
 on:
   pull_request:
     branches:
       - main
+
 jobs:
   test:
-    name: Run Tests
+    name: Run Playwright Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
@@ -13,30 +15,70 @@ jobs:
       BASE_URL: ${{ secrets.BASE_URL }}
 
     steps:
+      # -----------------------------
+      # Checkout code
+      # -----------------------------
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # -----------------------------
+      # Setup Node.js
+      # -----------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
-      - name: Install dependencies
-        run: npm ci
+      # -----------------------------
+      # Cache npm packages
+      # -----------------------------
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
+      # -----------------------------
+      # Cache Playwright browsers
+      # -----------------------------
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      # -----------------------------
+      # Install dependencies
+      # -----------------------------
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      # -----------------------------
+      # Install Playwright browsers
+      # -----------------------------
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # -----------------------------
+      # Lint & format check
+      # -----------------------------
       - name: Lint and format check
         run: |
           npm run lint
           npm run format:check
 
+      # -----------------------------
+      # Run Playwright tests
+      # -----------------------------
       - name: Run Playwright tests
         run: npm test
 
       # -----------------------------
-      # Allure report generation
+      # Preserve Allure history
       # -----------------------------
       - name: Copy previous Allure history
         if: always()
@@ -47,10 +89,16 @@ jobs:
           fi
         continue-on-error: true
 
+      # -----------------------------
+      # Generate Allure report
+      # -----------------------------
       - name: Generate Allure Report
         if: always()
         run: npm run allure:report
 
+      # -----------------------------
+      # Save Allure history for next run
+      # -----------------------------
       - name: Save Allure history
         if: always()
         run: |
@@ -59,7 +107,7 @@ jobs:
           cp -r allure-report/history/* allure-history/ || true
 
       # -----------------------------
-      # Upload artifacts
+      # Upload Allure report artifact
       # -----------------------------
       - name: Upload Allure Report
         if: always()
@@ -69,6 +117,9 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      # -----------------------------
+      # Attach Playwright artifacts on failure (screenshots, videos)
+      # -----------------------------
       - name: Attach test artifacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -77,11 +128,11 @@ jobs:
           path: test-results/
 
       # -----------------------------
-      # Deploy to GitHub Pages (optional)
+      # Optional: Deploy to GitHub Pages
       # -----------------------------
-      - name: Deploy report to Github Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy Allure Report to Github Pages
         if: always()
+        uses: peaceiris/actions-gh-pages@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages

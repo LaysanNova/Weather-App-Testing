@@ -47,14 +47,14 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Run Playwright tests
+      - name: Run tests
         run: npx playwright test
 
-      - name: Attach artifacts on failure
-        uses: actions/upload-artifact@v4
+      - name: Upload test artifacts
         if: failure()
+        uses: actions/upload-artifact@v4
         with:
-          name: Artifacts
+          name: playwright-results
           path: test-results/
 
       - name: Get Allure history
@@ -65,18 +65,18 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure Report with history
+      - name: Generate Allure Report
         uses: simple-elf/allure-report-action@v1.9
         if: always()
         with:
           gh_pages: gh-pages
-          allure_history: allure-history
           allure_results: allure-results
+          allure_history: allure-history
 
-      - name: Deploy report to Github Pages
+      - name: Deploy Allure report
         uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history

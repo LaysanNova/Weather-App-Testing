@@ -13,7 +13,7 @@ export default async function globalSetup() {
 
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await requestContext.get(url, { timeout: timeoutPerRequest });
+      const response = await requestContext.get(url, {timeout: timeoutPerRequest});
       if (response.ok()) {
         ok = true;
         logger.info(`✅ Site is reachable! Status: ${response.status()} (attempt ${i + 1})`);
@@ -33,3 +33,4 @@ export default async function globalSetup() {
     await requestContext.dispose();
     throw new Error(`❌ Site is not reachable after ${retries} attempts`);
   }
+}

@@ -1,15 +1,18 @@
-name: CI - Playwright Tests
+name: Playwright Tests CI
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+
+  push:
+    branches: [ main ]
 
 jobs:
-  test:
+  tests:
     name: Run Playwright Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
+
     env:
       ENV: dev
       BASE_URL: ${{ secrets.BASE_URL }}
@@ -27,59 +30,47 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          key: npm-${{ hashFiles('package-lock.json') }}
 
       - name: Cache Playwright browsers
         uses: actions/cache@v3
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
+          key: playwright-${{ runner.os }}
 
       - name: Install dependencies
-        run: npm ci --prefer-offline
+        run: npm ci
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium
 
-      - name: Lint and format check
-        run: |
-          npm run lint
-          npm run format:check
+      - name: Lint
+        run: npm run lint
 
       - name: Run Playwright tests
-        run: npm test
+        run: npx playwright test
 
-      - name: Attach artifacts on failure
+      - name: Upload test artifacts
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: Artifacts
+          name: playwright-artifacts
           path: test-results/
 
-      - name: Get Allure history
-        uses: actions/checkout@v4
+      - name: Generate Allure report
         if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+        run: npm run allure:report
 
-      - name: Allure Report with history
-        uses: simple-elf/allure-report-action@v1.9
+      - name: Upload Allure Report
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: allure-results
+          name: allure-report
+          path: allure-report
 
-      - name: Deploy report to Github Pages
+      - name: Deploy Allure to GitHub Pages
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
-        if: always()
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report

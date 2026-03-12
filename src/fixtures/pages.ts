@@ -1,6 +1,7 @@
 import { test as base } from './base';
 import { WelcomePage } from '../pages/WelcomePage';
 import { NewPage } from '../pages/NewPage';
+import { PastPage } from '../pages/PastPage';
 import { ThreadsPage } from '../pages/ThreadsPage';
 import { HackerNewsPage } from '../pages/HackerNewsPage';
 
@@ -8,6 +9,7 @@ type PageFixtures = {
   pages: {
     hackerNews: HackerNewsPage;
     new: NewPage;
+    past: PastPage;
     threads: ThreadsPage;
     welcome: WelcomePage;
   };
@@ -19,6 +21,7 @@ export const test = base.extend<PageFixtures>({
       hackerNews: new HackerNewsPage(page),
       welcome: new WelcomePage(page),
       new: new NewPage(page),
+      past: new PastPage(page),
       threads: new ThreadsPage(page),
     };
     await use(pages);

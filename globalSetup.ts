@@ -33,6 +33,3 @@ export default async function globalSetup() {
     await requestContext.dispose();
     throw new Error(`❌ Site is not reachable after ${retries} attempts`);
   }
-
-  await requestContext.dispose();
-}

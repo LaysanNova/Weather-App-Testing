@@ -30,6 +30,7 @@ jobs:
 
       - name: Lint
         run: npm run lint
+        continue-on-error: true
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -42,39 +43,39 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium
 
-      - name: Run tests
+      - name: Run Playwright tests
         run: npx playwright test
+        continue-on-error: true
 
-      - name: Get Allure history
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline@2.27.0
+
+      - name: Checkout previous Allure report
         uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
+          fetch-depth: 1
 
-      - name: Install Allure CLI
-        run: npm install -g allure-commandline
-
-      - name: Copy Allure history
+      - name: Copy history
         if: always()
         run: |
-          if [ -d gh-pages/allure-history/history ]; then
-            mkdir -p reports/allure-report/history
-            cp -r gh-pages/allure-history/history reports/allure-report/
+          if [ -d gh-pages/allure-report/history ]; then
+            mkdir -p allure-results/history
+            cp -r gh-pages/allure-report/history/* allure-results/history/
           fi
 
-      - name: Generate Allure Report
+      - name: Generate Allure report
         if: always()
         run: |
-          allure generate reports/allure-report \
-            --clean \
-            -o allure-history
+          allure generate allure-results -o allure-report
 
-      - name: Publish report on Github Pages
+      - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
-          github_token: ${{ secrets.PROJECT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: allure-report

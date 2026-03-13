@@ -1,2 +1,0 @@
-[03:50:10.106] INFO (2446): Navigating to /news
-[03:50:10.984] INFO (2446): HackerNews Page actual title: "Hacker News"

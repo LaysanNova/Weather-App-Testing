@@ -1,2 +1,0 @@
-[03:15:46.774] INFO (2761): Navigating to /newcomments
-[03:15:47.679] INFO (2761): Comments Page actual title: "New Comments | Hacker News"

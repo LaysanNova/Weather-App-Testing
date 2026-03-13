@@ -1,0 +1,2 @@
+[03:22:10.123] INFO (2645): Navigating to /front
+[03:22:10.742] INFO (2645): Past Page actual title: "2026-03-12 front | Hacker News"

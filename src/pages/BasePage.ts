@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, test } from '@playwright/test';
 import { logger } from '../utils/logger';
 
 export class BasePage {
@@ -16,7 +16,14 @@ export class BasePage {
   }
 
   async takeScreenshot(name: string) {
-    await this.page.screenshot({ path: `screenshots/${name}.png` });
+    const screenshot = await this.page.screenshot();
+
+    await test.info().attach(name, {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    logger.info(`Screenshot attached: ${name}`);
   }
 
   async getTitle() {

@@ -1,6 +1,5 @@
 import { getYesterdayDate } from '../../utils/dateUtils';
 
-const yesterday = getYesterdayDate();
 export const pageTitles = [
   { label: 'HackerNews Page', key: 'hackerNews', expectedTitle: 'Hacker News' },
   { label: 'New Page', key: 'new', expectedTitle: 'New Links | Hacker News' },

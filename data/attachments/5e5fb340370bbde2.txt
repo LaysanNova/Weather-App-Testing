@@ -1,0 +1,2 @@
+[21:09:14.200] INFO (2595): Navigating to /newest
+[21:09:15.131] INFO (2595): New Page actual title: "New Links | Hacker News"

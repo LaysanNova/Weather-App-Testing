@@ -44,12 +44,12 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium
 
-      - name: Cache Allure history
-        uses: actions/cache@v4
+      - name: Download Allure history
+        uses: actions/download-artifact@v4
+        if: always()
         with:
+          name: allure-history
           path: allure-results/history
-          key: allure-history
-          restore-keys: allure-history-
 
       - name: Run Playwright tests
         run: npx playwright test
@@ -72,6 +72,13 @@ jobs:
         run: |
           allure generate allure-results -o allure-report --clean
 
+      - name: Upload Allure history
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-history
+          path: allure-results/history
+
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: always()
@@ -80,8 +87,3 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-report
 
-      - name: Save Allure history to cache
-        uses: actions/cache@v4
-        with:
-          path: allure-results/history
-          key: allure-history

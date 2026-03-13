@@ -44,14 +44,6 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium
 
-      - name: Download Allure history
-        uses: actions/download-artifact@v4
-        if: always()
-        continue-on-error: true
-        with:
-          name: allure-history
-          path: allure-results/history
-
       - name: Run Playwright tests
         run: npx playwright test
         continue-on-error: true
@@ -68,17 +60,18 @@ jobs:
           path: gh-pages
           fetch-depth: 1
 
+      - name: Copy Allure history
+        if: always()
+        run: |
+          mkdir -p allure-results/history
+          if [ -d "gh-pages/history" ]; then
+            cp -r gh-pages/history/* allure-results/history || true
+          fi
+
       - name: Generate Allure report
         if: always()
         run: |
           allure generate allure-results -o allure-report --clean
-
-      - name: Upload Allure history
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-history
-          path: allure-results/history
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -87,4 +80,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-report
+          keep_files: true
 

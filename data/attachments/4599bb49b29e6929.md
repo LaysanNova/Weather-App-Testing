@@ -76,9 +76,9 @@
                     - link "malus.sh" [ref=e52] [cursor=pointer]:
                       - /url: from?site=malus.sh
                     - text: )
-            - row "1082 points by microflash 13 hours ago | 409 comments" [ref=e53]:
+            - row "1082 points by microflash 13 hours ago | 410 comments" [ref=e53]:
               - cell [ref=e54]
-              - cell "1082 points by microflash 13 hours ago | 409 comments" [ref=e55]:
+              - cell "1082 points by microflash 13 hours ago | 410 comments" [ref=e55]:
                 - generic [ref=e56]:
                   - text: 1082 points by
                   - link "microflash" [ref=e57] [cursor=pointer]:
@@ -87,7 +87,7 @@
                     - link "13 hours ago" [ref=e59] [cursor=pointer]:
                       - /url: item?id=47350424
                   - text: "|"
-                  - link "409 comments" [ref=e60] [cursor=pointer]:
+                  - link "410 comments" [ref=e60] [cursor=pointer]:
                     - /url: item?id=47350424
             - row [ref=e61]
             - 'row "2. upvote Show HN: s@: decentralized social networking over static sites (satproto.org)" [ref=e62]':
@@ -163,18 +163,18 @@
                     - link "gist.github.com" [ref=e112] [cursor=pointer]:
                       - /url: from?site=gist.github.com
                     - text: )
-            - row "925 points by breton 6 hours ago | 336 comments" [ref=e113]:
+            - row "929 points by breton 6 hours ago | 337 comments" [ref=e113]:
               - cell [ref=e114]
-              - cell "925 points by breton 6 hours ago | 336 comments" [ref=e115]:
+              - cell "929 points by breton 6 hours ago | 337 comments" [ref=e115]:
                 - generic [ref=e116]:
-                  - text: 925 points by
+                  - text: 929 points by
                   - link "breton" [ref=e117] [cursor=pointer]:
                     - /url: user?id=breton
                   - generic "2026-03-12T21:01:10 1773349270" [ref=e118]:
                     - link "6 hours ago" [ref=e119] [cursor=pointer]:
                       - /url: item?id=47357042
                   - text: "|"
-                  - link "336 comments" [ref=e120] [cursor=pointer]:
+                  - link "337 comments" [ref=e120] [cursor=pointer]:
                     - /url: item?id=47357042
             - row [ref=e121]
             - 'row "5. upvote Tested: How Many Times Can a DVD±RW Be Rewritten? Methodology and Results (goughlui.com)" [ref=e122]':
@@ -250,9 +250,9 @@
                     - link "davidoks.blog" [ref=e172] [cursor=pointer]:
                       - /url: from?site=davidoks.blog
                     - text: )
-            - row "347 points by colinprince 12 hours ago | 386 comments" [ref=e173]:
+            - row "347 points by colinprince 12 hours ago | 387 comments" [ref=e173]:
               - cell [ref=e174]
-              - cell "347 points by colinprince 12 hours ago | 386 comments" [ref=e175]:
+              - cell "347 points by colinprince 12 hours ago | 387 comments" [ref=e175]:
                 - generic [ref=e176]:
                   - text: 347 points by
                   - link "colinprince" [ref=e177] [cursor=pointer]:
@@ -261,7 +261,7 @@
                     - link "12 hours ago" [ref=e179] [cursor=pointer]:
                       - /url: item?id=47351371
                   - text: "|"
-                  - link "386 comments" [ref=e180] [cursor=pointer]:
+                  - link "387 comments" [ref=e180] [cursor=pointer]:
                     - /url: item?id=47351371
             - row [ref=e181]
             - row "8. upvote Returning to Rails in 2026 (markround.com)" [ref=e182]:
@@ -308,11 +308,11 @@
                     - link "duckdb.org" [ref=e212] [cursor=pointer]:
                       - /url: from?site=duckdb.org
                     - text: )
-            - row "318 points by bcye 15 hours ago | 258 comments" [ref=e213]:
+            - row "319 points by bcye 15 hours ago | 258 comments" [ref=e213]:
               - cell [ref=e214]
-              - cell "318 points by bcye 15 hours ago | 258 comments" [ref=e215]:
+              - cell "319 points by bcye 15 hours ago | 258 comments" [ref=e215]:
                 - generic [ref=e216]:
-                  - text: 318 points by
+                  - text: 319 points by
                   - link "bcye" [ref=e217] [cursor=pointer]:
                     - /url: user?id=bcye
                   - generic "2026-03-12T11:41:14 1773315674" [ref=e218]:
@@ -366,9 +366,9 @@
                     - link "stanford.edu" [ref=e252] [cursor=pointer]:
                       - /url: from?site=stanford.edu
                     - text: )
-            - row "249 points by mustaphah 10 hours ago | 101 comments" [ref=e253]:
+            - row "249 points by mustaphah 10 hours ago | 102 comments" [ref=e253]:
               - cell [ref=e254]
-              - cell "249 points by mustaphah 10 hours ago | 101 comments" [ref=e255]:
+              - cell "249 points by mustaphah 10 hours ago | 102 comments" [ref=e255]:
                 - generic [ref=e256]:
                   - text: 249 points by
                   - link "mustaphah" [ref=e257] [cursor=pointer]:
@@ -377,7 +377,7 @@
                     - link "10 hours ago" [ref=e259] [cursor=pointer]:
                       - /url: item?id=47353533
                   - text: "|"
-                  - link "101 comments" [ref=e260] [cursor=pointer]:
+                  - link "102 comments" [ref=e260] [cursor=pointer]:
                     - /url: item?id=47353533
             - row [ref=e261]
             - row "12. upvote Innocent woman jailed after being misidentified using AI facial recognition (grandforksherald.com)" [ref=e262]:
@@ -395,11 +395,11 @@
                     - link "grandforksherald.com" [ref=e272] [cursor=pointer]:
                       - /url: from?site=grandforksherald.com
                     - text: )
-            - row "441 points by rectang 6 hours ago | 225 comments" [ref=e273]:
+            - row "444 points by rectang 6 hours ago | 225 comments" [ref=e273]:
               - cell [ref=e274]
-              - cell "441 points by rectang 6 hours ago | 225 comments" [ref=e275]:
+              - cell "444 points by rectang 6 hours ago | 225 comments" [ref=e275]:
                 - generic [ref=e276]:
-                  - text: 441 points by
+                  - text: 444 points by
                   - link "rectang" [ref=e277] [cursor=pointer]:
                     - /url: user?id=rectang
                   - generic "2026-03-12T20:55:51 1773348951" [ref=e278]:
@@ -424,15 +424,15 @@
                     - link "parametricavocado.itch.io" [ref=e292] [cursor=pointer]:
                       - /url: from?site=parametricavocado.itch.io
                     - text: )
-            - row "269 points by eieio 9 hours ago | 87 comments" [ref=e293]:
+            - row "269 points by eieio 10 hours ago | 87 comments" [ref=e293]:
               - cell [ref=e294]
-              - cell "269 points by eieio 9 hours ago | 87 comments" [ref=e295]:
+              - cell "269 points by eieio 10 hours ago | 87 comments" [ref=e295]:
                 - generic [ref=e296]:
                   - text: 269 points by
                   - link "eieio" [ref=e297] [cursor=pointer]:
                     - /url: user?id=eieio
                   - generic "2026-03-12T17:13:56 1773335636" [ref=e298]:
-                    - link "9 hours ago" [ref=e299] [cursor=pointer]:
+                    - link "10 hours ago" [ref=e299] [cursor=pointer]:
                       - /url: item?id=47354098
                   - text: "|"
                   - link "87 comments" [ref=e300] [cursor=pointer]:
@@ -482,18 +482,18 @@
                     - link "marketscreener.com" [ref=e332] [cursor=pointer]:
                       - /url: from?site=marketscreener.com
                     - text: )
-            - row "280 points by JumpCrisscross 14 hours ago | 364 comments" [ref=e333]:
+            - row "282 points by JumpCrisscross 14 hours ago | 367 comments" [ref=e333]:
               - cell [ref=e334]
-              - cell "280 points by JumpCrisscross 14 hours ago | 364 comments" [ref=e335]:
+              - cell "282 points by JumpCrisscross 14 hours ago | 367 comments" [ref=e335]:
                 - generic [ref=e336]:
-                  - text: 280 points by
+                  - text: 282 points by
                   - link "JumpCrisscross" [ref=e337] [cursor=pointer]:
                     - /url: user?id=JumpCrisscross
                   - generic "2026-03-12T12:44:45 1773319485" [ref=e338]:
                     - link "14 hours ago" [ref=e339] [cursor=pointer]:
                       - /url: item?id=47349806
                   - text: "|"
-                  - link "364 comments" [ref=e340] [cursor=pointer]:
+                  - link "367 comments" [ref=e340] [cursor=pointer]:
                     - /url: item?id=47349806
             - row [ref=e341]
             - row "16. upvote Asian governments roll out 4-day weeks, WFH to solve fuel crisis caused by war (fortune.com)" [ref=e342]:
@@ -511,11 +511,11 @@
                     - link "fortune.com" [ref=e352] [cursor=pointer]:
                       - /url: from?site=fortune.com
                     - text: )
-            - row "380 points by speckx 11 hours ago | 315 comments" [ref=e353]:
+            - row "381 points by speckx 11 hours ago | 315 comments" [ref=e353]:
               - cell [ref=e354]
-              - cell "380 points by speckx 11 hours ago | 315 comments" [ref=e355]:
+              - cell "381 points by speckx 11 hours ago | 315 comments" [ref=e355]:
                 - generic [ref=e356]:
-                  - text: 380 points by
+                  - text: 381 points by
                   - link "speckx" [ref=e357] [cursor=pointer]:
                     - /url: user?id=speckx
                   - generic "2026-03-12T15:30:37 1773329437" [ref=e358]:
@@ -743,11 +743,11 @@
                     - link "codespeak.dev" [ref=e512] [cursor=pointer]:
                       - /url: from?site=codespeak.dev
                     - text: )
-            - row "273 points by souvlakee 12 hours ago | 240 comments" [ref=e513]:
+            - row "274 points by souvlakee 12 hours ago | 240 comments" [ref=e513]:
               - cell [ref=e514]
-              - cell "273 points by souvlakee 12 hours ago | 240 comments" [ref=e515]:
+              - cell "274 points by souvlakee 12 hours ago | 240 comments" [ref=e515]:
                 - generic [ref=e516]:
-                  - text: 273 points by
+                  - text: 274 points by
                   - link "souvlakee" [ref=e517] [cursor=pointer]:
                     - /url: user?id=souvlakee
                   - generic "2026-03-12T14:22:43 1773325363" [ref=e518]:
@@ -844,63 +844,63 @@
                   - link "62 comments" [ref=e580] [cursor=pointer]:
                     - /url: item?id=47352297
             - row [ref=e581]
-            - row "28. upvote WebPKI and You (brycekerley.net)" [ref=e582]:
+            - 'row "28. upvote WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations (github.com/wolfssl)" [ref=e582]':
               - cell "28." [ref=e583]
               - cell "upvote" [ref=e584]:
                 - link "upvote" [ref=e586] [cursor=pointer]:
-                  - /url: vote?id=47308349&how=up&goto=front
+                  - /url: vote?id=47352385&how=up&goto=front
                   - generic "upvote" [ref=e587]
-              - cell "WebPKI and You (brycekerley.net)" [ref=e588]:
+              - 'cell "WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations (github.com/wolfssl)" [ref=e588]':
                 - generic [ref=e589]:
-                  - link "WebPKI and You" [ref=e590] [cursor=pointer]:
-                    - /url: https://blog.brycekerley.net/2026/03/08/webpki-and-you.html
+                  - 'link "WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations" [ref=e590] [cursor=pointer]':
+                    - /url: https://github.com/wolfssl/wolfip
                   - generic [ref=e591]:
                     - text: (
-                    - link "brycekerley.net" [ref=e592] [cursor=pointer]:
-                      - /url: from?site=brycekerley.net
+                    - link "github.com/wolfssl" [ref=e592] [cursor=pointer]:
+                      - /url: from?site=github.com/wolfssl
                     - text: )
-            - row "85 points by aragilar 3 days ago | 16 comments" [ref=e593]:
+            - row "100 points by 789c789c789c 11 hours ago | 13 comments" [ref=e593]:
               - cell [ref=e594]
-              - cell "85 points by aragilar 3 days ago | 16 comments" [ref=e595]:
+              - cell "100 points by 789c789c789c 11 hours ago | 13 comments" [ref=e595]:
                 - generic [ref=e596]:
-                  - text: 85 points by
-                  - link "aragilar" [ref=e597] [cursor=pointer]:
-                    - /url: user?id=aragilar
-                  - generic "2026-03-09T12:47:11 1773060431" [ref=e598]:
-                    - link "3 days ago" [ref=e599] [cursor=pointer]:
-                      - /url: item?id=47308349
+                  - text: 100 points by
+                  - link "789c789c789c" [ref=e597] [cursor=pointer]:
+                    - /url: user?id=789c789c789c
+                  - generic "2026-03-12T15:39:50 1773329990" [ref=e598]:
+                    - link "11 hours ago" [ref=e599] [cursor=pointer]:
+                      - /url: item?id=47352385
                   - text: "|"
-                  - link "16 comments" [ref=e600] [cursor=pointer]:
-                    - /url: item?id=47308349
+                  - link "13 comments" [ref=e600] [cursor=pointer]:
+                    - /url: item?id=47352385
             - row [ref=e601]
-            - 'row "29. upvote WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations (github.com/wolfssl)" [ref=e602]':
+            - row "29. upvote WebPKI and You (brycekerley.net)" [ref=e602]:
               - cell "29." [ref=e603]
               - cell "upvote" [ref=e604]:
                 - link "upvote" [ref=e606] [cursor=pointer]:
-                  - /url: vote?id=47352385&how=up&goto=front
+                  - /url: vote?id=47308349&how=up&goto=front
                   - generic "upvote" [ref=e607]
-              - 'cell "WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations (github.com/wolfssl)" [ref=e608]':
+              - cell "WebPKI and You (brycekerley.net)" [ref=e608]:
                 - generic [ref=e609]:
-                  - 'link "WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations" [ref=e610] [cursor=pointer]':
-                    - /url: https://github.com/wolfssl/wolfip
+                  - link "WebPKI and You" [ref=e610] [cursor=pointer]:
+                    - /url: https://blog.brycekerley.net/2026/03/08/webpki-and-you.html
                   - generic [ref=e611]:
                     - text: (
-                    - link "github.com/wolfssl" [ref=e612] [cursor=pointer]:
-                      - /url: from?site=github.com/wolfssl
+                    - link "brycekerley.net" [ref=e612] [cursor=pointer]:
+                      - /url: from?site=brycekerley.net
                     - text: )
-            - row "100 points by 789c789c789c 11 hours ago | 13 comments" [ref=e613]:
+            - row "85 points by aragilar 3 days ago | 16 comments" [ref=e613]:
               - cell [ref=e614]
-              - cell "100 points by 789c789c789c 11 hours ago | 13 comments" [ref=e615]:
+              - cell "85 points by aragilar 3 days ago | 16 comments" [ref=e615]:
                 - generic [ref=e616]:
-                  - text: 100 points by
-                  - link "789c789c789c" [ref=e617] [cursor=pointer]:
-                    - /url: user?id=789c789c789c
-                  - generic "2026-03-12T15:39:50 1773329990" [ref=e618]:
-                    - link "11 hours ago" [ref=e619] [cursor=pointer]:
-                      - /url: item?id=47352385
+                  - text: 85 points by
+                  - link "aragilar" [ref=e617] [cursor=pointer]:
+                    - /url: user?id=aragilar
+                  - generic "2026-03-09T12:47:11 1773060431" [ref=e618]:
+                    - link "3 days ago" [ref=e619] [cursor=pointer]:
+                      - /url: item?id=47308349
                   - text: "|"
-                  - link "13 comments" [ref=e620] [cursor=pointer]:
-                    - /url: item?id=47352385
+                  - link "16 comments" [ref=e620] [cursor=pointer]:
+                    - /url: item?id=47308349
             - row [ref=e621]
             - 'row "30. upvote SBCL: A Sanely-Bootstrappable Common Lisp (2008) [pdf] (gold.ac.uk)" [ref=e622]':
               - cell "30." [ref=e623]

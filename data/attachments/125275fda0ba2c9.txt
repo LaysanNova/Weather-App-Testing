@@ -1,0 +1,2 @@
+[22:03:08.390] INFO (2453): Navigating to /news
+[22:03:09.226] INFO (2453): Row count: 30

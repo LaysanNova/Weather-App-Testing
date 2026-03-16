@@ -25,9 +25,7 @@ type PageFixtures = {
 };
 
 export const test = base.extend<PageFixtures>({
-
   pages: async ({ page }, use) => {
-
     const pages: PageFixtures['pages'] = {
       hackerNews: new HackerNewsPage(page),
       new: new NewPage(page),
@@ -63,7 +61,6 @@ export const test = base.extend<PageFixtures>({
   //
   //   await use(pages.threads);
   // },
-
 });
 
 export const expect = test.expect;

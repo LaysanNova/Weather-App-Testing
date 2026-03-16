@@ -2,7 +2,7 @@ import { BasePage } from './BasePage';
 import { MenuComponent } from '../components/menu.component';
 import { TableHeaderComponent } from '../components/table-header.component';
 import { TableRowsComponent } from '../components/table-rows.component';
-import {HackerNewsPage} from "./HackerNewsPage";
+import { HackerNewsPage } from './HackerNewsPage';
 
 export class NewPage extends BasePage {
   readonly menu: MenuComponent;

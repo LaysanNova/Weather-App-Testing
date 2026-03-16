@@ -43,3 +43,4 @@ allure-results/
 allure-report/
 
 ins
+src/pages/LoginPage.ts

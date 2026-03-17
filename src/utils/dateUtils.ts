@@ -4,3 +4,11 @@ export function getYesterdayDate(): string {
 
   return date.toISOString().split('T')[0];
 }
+
+export function getUnixTimestamp(title: string | null): number {
+  if (!title) {
+    throw new Error('Timestamp attribute is missing');
+  }
+
+  return Number(title.split(' ')[1]);
+}

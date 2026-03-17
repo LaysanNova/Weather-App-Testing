@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 
 export class TableRowsComponent {
-  readonly page: Page;
+  private readonly page: Page;
   private readonly storyRows: Locator;
 
   constructor(page: Page) {
@@ -11,6 +11,10 @@ export class TableRowsComponent {
 
   getRowCount() {
     return this.storyRows.count();
+  }
+
+  getRank(index: number): Locator {
+    return this.storyRows.nth(index).locator('.rank');
   }
 
   getTitle(index: number): Locator {
@@ -25,6 +29,14 @@ export class TableRowsComponent {
     const titleRow = this.storyRows.nth(rowIndex);
     const sublineRow = titleRow.locator('xpath=following-sibling::tr[1]');
     return sublineRow.locator('.subline');
+  }
+
+  getAge(rowIndex: number): Locator {
+    return this.getSubline(rowIndex).locator('.age');
+  }
+
+  gettimestamps(age: Locator): Promise<string | null> {
+    return age.getAttribute('title');
   }
 
   async getRow(rowIndex: number): Promise<{ title: Locator | null; subline: Locator | null }> {

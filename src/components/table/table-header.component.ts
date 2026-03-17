@@ -1,8 +1,8 @@
 import { Page, Locator } from '@playwright/test';
 
 export class TableHeaderComponent {
-  readonly page: Page;
-  readonly headers: Locator;
+  private readonly page: Page;
+  private readonly headers: Locator;
 
   constructor(page: Page) {
     this.page = page;

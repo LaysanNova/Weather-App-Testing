@@ -1,13 +1,13 @@
 import { BasePage } from './BasePage';
 
 import { MenuComponent } from '../components/menu.component';
-import { TableHeaderComponent } from '../components/table-header.component';
-import { TableRowsComponent } from '../components/table-rows.component';
+import { TableHeaderComponent } from '../components/table/table-header.component';
+import { TableRowsComponent } from '../components/table/table-rows.component';
 
 export class HackerNewsPage extends BasePage {
-  readonly menu: MenuComponent;
-  readonly tableHeader: TableHeaderComponent;
-  readonly tableRows: TableRowsComponent;
+  private readonly menu: MenuComponent;
+  private readonly tableHeader: TableHeaderComponent;
+  private readonly tableRows: TableRowsComponent;
 
   constructor(page: any) {
     super(page, '/news');

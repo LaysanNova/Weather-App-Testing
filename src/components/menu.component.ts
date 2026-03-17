@@ -1,18 +1,18 @@
 import { Page, Locator } from '@playwright/test';
 
 export class MenuComponent {
-  readonly page: Page;
-  readonly menuRow: Locator;
-  readonly loginBtn: Locator;
+  private readonly page: Page;
+  private readonly menuRow: Locator;
+  private readonly loginBtn: Locator;
 
-  readonly newLink: Locator;
-  readonly pastLink: Locator;
-  readonly commentsLink: Locator;
+  private readonly newLink: Locator;
+  private readonly pastLink: Locator;
+  private readonly commentsLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.menuRow = page.locator('tr .pagetop').nth(1);
-    this.loginBtn = page.locator('tr .pagetop').nth(2);
+    this.menuRow = this.page.locator('tr .pagetop').nth(1);
+    this.loginBtn = this.page.locator('tr .pagetop').nth(2);
 
     this.newLink = this.page.getByRole('link', { name: 'new', exact: true });
     this.pastLink = this.page.getByRole('link', { name: 'past', exact: true });

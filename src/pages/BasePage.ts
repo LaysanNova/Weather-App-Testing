@@ -3,7 +3,7 @@ import { logger } from '../utils/logger';
 
 export class BasePage {
   constructor(
-    protected page: Page,
+    public page: Page,
     protected url?: string,
   ) {}
 

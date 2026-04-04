@@ -41,7 +41,7 @@ export const test = base.extend<PageFixtures>({
   // Navigate to New page
   newPage: async ({ pages }, use) => {
     await pages.welcome.navigate();
-    await pages.new.menu.goToNewLink();
+    await pages.new.getMenu().goToNewLink();
 
     await use(pages.new);
   },

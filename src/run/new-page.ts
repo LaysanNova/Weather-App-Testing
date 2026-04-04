@@ -47,7 +47,7 @@ test.describe('New Page Table', () => {
 
       if (!reachedLimit) {
         await test.step(`Click 'More' Button`, async () => {
-          await newPage.footer.clickMoreBtn();
+          await newPage.getFooter().clickMoreBtn();
         });
       }
 

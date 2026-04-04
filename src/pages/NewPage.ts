@@ -25,7 +25,15 @@ export class NewPage extends BasePage {
     await this.menu.goToNewLink();
   }
 
+  getMenu(): MenuComponent {
+    return this.menu;
+  }
+
   getTable(): TableRowsComponent {
     return this.table;
+  }
+
+  getFooter(): FooterComponent {
+    return this.footer;
   }
 }

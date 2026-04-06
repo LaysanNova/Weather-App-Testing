@@ -1,36 +1,39 @@
-import { Page, test } from '@playwright/test';
-import { logger } from '../utils/logger';
+import { MenuComponent } from '../components/menu.component';
+import { FooterComponent } from '../components/footer.component';
+
+import { Page } from '@playwright/test';
+import { TableComponent } from '../components/table.component';
 
 export class BasePage {
-  constructor(
-    public page: Page,
-    protected url?: string,
-  ) {}
+  private readonly page: Page;
+  private readonly menu: MenuComponent;
+  private readonly footer: FooterComponent;
+  private readonly tableRows: TableComponent;
 
-  async navigate(path?: string) {
-    const target = path ?? this.url;
-    if (!target) throw new Error('URL is not defined for this page');
-    logger.info(`Navigating to ${target}`);
-    await this.page.goto(target);
-    await this.page.waitForLoadState('networkidle');
+  constructor(page: any) {
+    this.page = page;
+    this.menu = new MenuComponent(page);
+    this.footer = new FooterComponent(page);
+    this.tableRows = new TableComponent(page);
   }
 
-  async takeScreenshot(name: string) {
-    const screenshot = await this.page.screenshot();
-
-    await test.info().attach(name, {
-      body: screenshot,
-      contentType: 'image/png',
-    });
-
-    logger.info(`Screenshot attached: ${name}`);
+  getPage(): Page {
+    return this.page;
   }
 
-  async getTitle() {
+  getMenu(): MenuComponent {
+    return this.menu;
+  }
+
+  getTable(): TableComponent {
+    return this.tableRows;
+  }
+
+  getFooter(): FooterComponent {
+    return this.footer;
+  }
+
+  getTitle() {
     return this.page.title();
-  }
-
-  get logger() {
-    return logger;
   }
 }

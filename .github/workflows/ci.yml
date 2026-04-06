@@ -15,7 +15,8 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       ENV: dev
       BASE_URL: ${{ secrets.BASE_URL }}
-
+      USER_NAME: ${{ secrets.USER_NAME }}
+      USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -1,6 +1,6 @@
-// await page.getByRole('link', { name: 'More' }).click();
-
 import { Page, Locator } from '@playwright/test';
+import { expect } from 'playwright/test';
+import { TableComponent } from './table.component';
 
 export class FooterComponent {
   private readonly page: Page;
@@ -13,5 +13,14 @@ export class FooterComponent {
 
   async clickMoreBtn() {
     await this.moreBtn.click();
+  }
+
+  async loadNextRows(table: TableComponent) {
+    await this.moreBtn.waitFor({ state: 'visible' });
+
+    const lastRank = await table.getRank((await table.rowCount()) - 1);
+    await this.clickMoreBtn();
+    const nextRank = await table.getRank(0);
+    expect(nextRank).toBe(lastRank + 1);
   }
 }

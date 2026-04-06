@@ -1,33 +1,58 @@
-import { Page, Locator } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export class MenuComponent {
   private readonly page: Page;
-  private readonly menuRow: Locator;
-  private readonly loginBtn: Locator;
 
   private readonly newLink: Locator;
   private readonly pastLink: Locator;
-  private readonly commentsLink: Locator;
+  private readonly homeLink: Locator;
+  private readonly loginLink: Locator;
+  private readonly userElement: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.menuRow = this.page.locator('tr .pagetop').nth(1);
-    this.loginBtn = this.page.locator('tr .pagetop').nth(2);
 
     this.newLink = this.page.getByRole('link', { name: 'new', exact: true });
     this.pastLink = this.page.getByRole('link', { name: 'past', exact: true });
-    this.commentsLink = this.page.getByRole('link', { name: 'comments', exact: true });
+    this.homeLink = this.page.locator('.hnname');
+    this.loginLink = this.page.getByRole('link', { name: 'login', exact: true });
+
+    this.userElement = this.page.locator('#me');
   }
 
-  async goToNewLink() {
-    await this.newLink.click();
+  async goToNew(): Promise<void> {
+    try {
+      await Promise.all([this.page.waitForURL('**/newest'), this.newLink.click()]);
+    } catch (error: unknown) {
+      throw error as Error;
+    }
   }
 
-  async goToPastLink() {
-    await this.pastLink.click();
+  async goToPast(): Promise<void> {
+    try {
+      await Promise.all([this.page.waitForURL('**/front'), this.pastLink.click()]);
+    } catch (error: unknown) {
+      throw error as Error;
+    }
   }
 
-  async goToCommentsLink() {
-    await this.commentsLink.click();
+  async goToHome(): Promise<void> {
+    try {
+      await Promise.all([this.page.waitForURL('**/news'), this.homeLink.click()]);
+    } catch (error: unknown) {
+      throw error as Error;
+    }
+  }
+
+  async goToLogin(): Promise<void> {
+    try {
+      await Promise.all([this.page.waitForURL(/\/login/), this.loginLink.click()]);
+    } catch (error: unknown) {
+      throw error as Error;
+    }
+  }
+
+  getUserElements(): Locator {
+    return this.userElement;
   }
 }

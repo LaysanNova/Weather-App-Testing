@@ -1,7 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Mar 17 03:54:11 UTC 2026","Tue Mar 17 03:54:12 UTC 2026","991","chromium vv","","Page Titles Validation","","","Comments Page should have the correct title",""
-"passed","Tue Mar 17 03:54:10 UTC 2026","Tue Mar 17 03:54:11 UTC 2026","982","chromium vv","","Page Titles Validation","","","Past Page should have the correct title",""
-"passed","Tue Mar 17 03:54:09 UTC 2026","Tue Mar 17 03:54:10 UTC 2026","970","chromium vv","","Page Titles Validation","","","New Page should have the correct title",""
-"passed","Tue Mar 17 03:54:08 UTC 2026","Tue Mar 17 03:54:09 UTC 2026","979","chromium vv","","Page Titles Validation","","","HackerNews Page should have the correct title",""
-"passed","Tue Mar 17 03:54:03 UTC 2026","Tue Mar 17 03:54:08 UTC 2026","5341","chromium vv","","New Page Table","","","Validate that EXACTLY the first 100 articles are sorted from newest to oldest",""
-"passed","Tue Mar 17 03:54:00 UTC 2026","Tue Mar 17 03:54:01 UTC 2026","1366","chromium vv","","New Page Table","","","Table should be visible",""

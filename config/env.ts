@@ -1,13 +1,28 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-const envFile = `.env.${process.env.ENV || 'dev'}`;
-dotenv.config({ path: path.resolve(__dirname, '..', envFile) });
+type Env = 'dev' | 'qa' | 'staging' | 'prod';
 
-if (!process.env.BASE_URL) {
-  throw new Error(`BASE_URL is not defined in ${envFile}`);
+const CURRENT_ENV: Env = (process.env.ENV as Env) || 'dev';
+
+const envFile = `.env.${CURRENT_ENV}`;
+dotenv.config({
+  path: path.resolve(process.cwd(), envFile),
+});
+
+function getEnvVar(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`❌ Missing required env variable: ${name} in ${envFile}`);
+  }
+  return value;
 }
 
-export const BASE_URL = process.env.BASE_URL;
-export const CURRENT_ENV = process.env.ENV || 'dev';
-console.log(`Running tests on environment: ${CURRENT_ENV} → ${BASE_URL}`);
+export const config = {
+  env: CURRENT_ENV,
+  baseUrl: getEnvVar('BASE_URL'),
+  user: {
+    username: getEnvVar('USER_NAME'),
+    password: getEnvVar('USER_PASSWORD'),
+  },
+} as const;

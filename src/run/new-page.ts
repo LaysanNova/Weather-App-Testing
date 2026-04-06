@@ -1,12 +1,9 @@
 import { test, expect } from '../fixtures/pages';
 import { ROW_COUNT, ROWS_100 } from '../pages/data/testData';
-import { getUnixTimestamp } from '../utils/dateUtils';
 
 test.describe('New Page Table', () => {
   test('Table should be visible', async ({ newPage }) => {
-    const rowCount = await newPage.getTable().getRowCount();
-
-    newPage.logger.info(`Row count: ${rowCount}`);
+    const rowCount = await newPage.getTable().rowCount();
 
     expect(rowCount).toEqual(ROW_COUNT);
   });
@@ -14,44 +11,35 @@ test.describe('New Page Table', () => {
   test('Validate that EXACTLY the first 100 articles are sorted from newest to oldest', async ({
     newPage,
   }) => {
-    let rank;
+    const table = newPage.getTable();
+    const footer = newPage.getFooter();
+
     let reachedLimit = false;
-    let previousTime: number | null = null;
+    let previousTime = null;
 
     while (!reachedLimit) {
-      let rowCount = await newPage.getTable().getRowCount();
+      const rowCount = await table.rowCount();
+
       for (let i = 0; i < rowCount; i++) {
-        rank = Number(await newPage.getTable().getRank(i).textContent());
+        const rank = await table.getRank(i);
 
         if (rank > ROWS_100) {
           reachedLimit = true;
           break;
         }
 
-        const age = newPage.getTable().getAge(i);
-        await test.step(`Row ${rank}`, async () => {
-          newPage.logger.info(
-            `Row ${i + 1}: Rank = ${await newPage.getTable().getRank(i).textContent()} | Age = ${await age.textContent()}`,
-          );
-        });
+        const currentTime = await table.getTimestamp(i);
 
-        const currentTime = getUnixTimestamp(await newPage.getTable().gettimestamps(age));
+        if (previousTime !== null) {
+          expect(currentTime).toBeLessThanOrEqual(previousTime);
+        }
 
-        await test.step(`Check if ${currentTime} <= ${previousTime} `, async () => {
-          if (previousTime !== null) {
-            expect(currentTime).toBeLessThanOrEqual(previousTime);
-          }
-        });
         previousTime = currentTime;
       }
 
       if (!reachedLimit) {
-        await test.step(`Click 'More' Button`, async () => {
-          await newPage.footer.clickMoreBtn();
-        });
+        await footer.loadNextRows(table);
       }
-
-      newPage.logger.info(`After clicking more: row count = ${rowCount}`);
     }
   });
 });

@@ -1,66 +1,45 @@
-import { test as base } from '@playwright/test';
-import { HackerNewsPage } from '../pages/HackerNewsPage';
+import { Page, test as base } from '@playwright/test';
+import { MenuComponent } from '../components/menu.component';
 import { NewPage } from '../pages/NewPage';
 import { PastPage } from '../pages/PastPage';
-import { CommentsPage } from '../pages/CommentsPage';
-import { WelcomePage } from '../pages/WelcomePage';
-import { ThreadsPage } from '../pages/ThreadsPage';
+import { HomePage } from '../pages/HomePage';
+import { loginUser } from '../utils/login-utils';
+import { config } from '../../config/env';
 
-type PageFixtures = {
-  pages: {
-    hackerNews: HackerNewsPage;
-    new: NewPage;
-    past: PastPage;
-    comments: CommentsPage;
-    welcome: WelcomePage;
-    threads: ThreadsPage;
-  };
+type PageConstructor<T> = new (page: Page) => T;
 
-  hackerNews: HackerNewsPage;
-  newPage: NewPage;
-  pastPage: PastPage;
-  comments: CommentsPage;
-  welcome: WelcomePage;
-  threadsPage: ThreadsPage;
+type NavigationOptions<T> = {
+  page: Page;
+  PageClass: PageConstructor<T>;
+  navigate: (menu: MenuComponent) => Promise<void>;
 };
 
-export const test = base.extend<PageFixtures>({
-  pages: async ({ page }, use) => {
-    const pages: PageFixtures['pages'] = {
-      hackerNews: new HackerNewsPage(page),
-      new: new NewPage(page),
-      past: new PastPage(page),
-      comments: new CommentsPage(page),
-      welcome: new WelcomePage(page),
-      threads: new ThreadsPage(page),
-    };
+async function setupPage<T>({ page, PageClass, navigate }: NavigationOptions<T>): Promise<T> {
+  const menu = new MenuComponent(page);
 
-    await use(pages);
-  },
+  await page.goto(config.baseUrl);
+  await menu.goToLogin();
+  await loginUser(page);
+  await navigate(menu);
 
-  // Navigate to New page
-  newPage: async ({ pages }, use) => {
-    await pages.welcome.navigate();
-    await pages.new.menu.goToNewLink();
+  return new PageClass(page);
+}
 
-    await use(pages.new);
-  },
+const createPageFixture =
+  <T>(PageClass: PageConstructor<T>, navigate: (menu: MenuComponent) => Promise<void>) =>
+  async ({ page }: { page: Page }, use: (arg: T) => Promise<void>) => {
+    const instance = await setupPage({ page, PageClass, navigate });
+    await use(instance);
+  };
 
-  // // Navigate to Past page
-  // pastPage: async ({ pages }, use) => {
-  //   await pages.welcome.navigate();
-  //   await pages.past.menu.goToPast();
-  //
-  //   await use(pages.past);
-  // },
-  //
-  // // Navigate to Threads page
-  // threadsPage: async ({ pages }, use) => {
-  //   await pages.welcome.navigate();
-  //   await pages.threads.menu.goToThreads();
-  //
-  //   await use(pages.threads);
-  // },
+export const test = base.extend<{
+  newPage: NewPage;
+  pastPage: PastPage;
+  homePage: HomePage;
+}>({
+  newPage: createPageFixture(NewPage, (menu) => menu.goToNew()),
+  pastPage: createPageFixture(PastPage, (menu) => menu.goToPast()),
+  homePage: createPageFixture(HomePage, (menu) => menu.goToHome()),
 });
 
 export const expect = test.expect;

@@ -1,4 +1,4 @@
-import { Page, test as base } from '@playwright/test';
+import {Page, test as base, TestInfo} from '@playwright/test';
 import { MenuComponent } from '../components/menu.component';
 import { NewPage } from '../pages/NewPage';
 import { PastPage } from '../pages/PastPage';
@@ -26,7 +26,9 @@ async function setupPage<T>({ page, PageClass, navigate }: NavigationOptions<T>)
 }
 
 const createPageFixture =
-  <T>(PageClass: PageConstructor<T>, navigate: (menu: MenuComponent) => Promise<void>) =>
+  <T>(
+      PageClass: PageConstructor<T>,
+      navigate: (menu: MenuComponent) => Promise<void>) =>
   async ({ page }: { page: Page }, use: (arg: T) => Promise<void>) => {
     const instance = await setupPage({ page, PageClass, navigate });
     await use(instance);

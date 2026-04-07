@@ -1,5 +1,6 @@
 import { request } from "@playwright/test";
-import { logger } from "./src/utils/logger";
+import logger from "./src/utils/logger";
+
 
 export default async function globalSetup() {
   const url = process.env.BASE_URL as string;
@@ -19,13 +20,15 @@ export default async function globalSetup() {
         logger.info(`✅ Site is reachable! Status: ${response.status()} (attempt ${i + 1})`);
         break;
       } else {
-        logger.warn(`⚠ Attempt ${i + 1}: Site responded with status ${response.status()}`);
+        logger.warn(`⚠ Attempt ${i + 1}: Status ${response.status()}`);
       }
     } catch (error) {
-      logger.warn(`⚠ Attempt ${i + 1}: Request failed (${error})`);
+      logger.warn(
+          { err: error },
+          `⚠ Attempt ${i + 1}: Request failed`
+      );
     }
 
-    // Ждём перед следующей попыткой
     await new Promise(r => setTimeout(r, pauseMs));
   }
 

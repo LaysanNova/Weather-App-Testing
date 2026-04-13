@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 
-export class MenuComponent {
+export default class MenuComponent {
   private readonly page: Page;
 
   private readonly newLink: Locator;

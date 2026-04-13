@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { getUnixTimestamp } from '../utils/dateUtils';
 
-export class TableComponent {
+export default class TableComponent {
   private readonly page: Page;
   private readonly table: Locator;
 

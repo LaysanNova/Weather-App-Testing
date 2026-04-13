@@ -1,9 +1,29 @@
 import pino from 'pino';
 
-export const logger = pino({
-  level: process.env.LOG_LEVEL || 'info',
-  transport: {
-    target: 'pino-pretty',
-    options: { colorize: true },
-  },
-});
+const env = process.env.ENV || 'dev';
+const isDev = env === 'dev';
+
+const logger = pino(
+    isDev
+        ? {
+            level: 'debug',
+            base: null,
+            timestamp: pino.stdTimeFunctions.isoTime,
+            transport: {
+                target: 'pino-pretty',
+                options: {
+                    colorize: true,
+                    translateTime: 'SYS:standard',
+                    ignore: 'pid,hostname',
+                },
+
+            },
+        }
+        : {
+            level: 'info',
+            base: null,
+            timestamp: pino.stdTimeFunctions.isoTime,
+        }
+);
+
+export default logger;

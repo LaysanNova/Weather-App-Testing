@@ -1,3 +1,3 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon Apr 13 20:20:00 UTC 2026","Mon Apr 13 20:20:01 UTC 2026","878","chromium","","New Page Table","","","Table should be visible",""
-"passed","Mon Apr 13 20:20:01 UTC 2026","Mon Apr 13 20:20:04 UTC 2026","3239","chromium","","New Page Table","","","Validate that EXACTLY the first 100 articles are sorted from newest to oldest",""
+"broken","Mon Apr 13 20:23:54 UTC 2026","Mon Apr 13 20:24:57 UTC 2026","62754","chromium","","New Page Table","","","Table should be visible",""
+"broken","Mon Apr 13 20:27:06 UTC 2026","Mon Apr 13 20:28:09 UTC 2026","62717","chromium","","New Page Table","","","Validate that EXACTLY the first 100 articles are sorted from newest to oldest",""

@@ -4,7 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "playwright test src/run",
+    "test": "ENV=prod npx playwright test",
+    "test:dev": "ENV=dev npx playwright test",
+    "test:staging": "ENV=staging npx playwright test",
+    "test:prod": "ENV=prod npx playwright test",
     "test:headed": "playwright test src/run --headed",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",

@@ -9,7 +9,7 @@ test.describe('New Page Table', () => {
   });
 
   test('Validate that EXACTLY the first 100 articles are sorted from newest to oldest', async ({
-    newPage,
+    newPage, log
   }) => {
     const table = newPage.getTable();
     const footer = newPage.getFooter();

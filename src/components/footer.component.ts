@@ -1,8 +1,9 @@
 import { Page, Locator } from '@playwright/test';
 import { expect } from 'playwright/test';
-import { TableComponent } from './table.component';
+import TableComponent from "./table.component";
 
-export class FooterComponent {
+
+export default class FooterComponent {
   private readonly page: Page;
   private readonly moreBtn: Locator;
 

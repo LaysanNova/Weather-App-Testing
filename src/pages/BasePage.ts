@@ -1,9 +1,9 @@
-import { MenuComponent } from '../components/menu.component';
-import { FooterComponent } from '../components/footer.component';
 
 import { Page } from '@playwright/test';
-import { TableComponent } from '../components/table.component';
 import logger from '../utils/logger';
+import TableComponent from "../components/table.component";
+import MenuComponent from "../components/menu.component";
+import FooterComponent from "../components/footer.component";
 
 export class BasePage {
   private readonly page: Page;

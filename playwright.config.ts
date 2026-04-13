@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 import os from "os";
-import {config} from "./config/env";
+import { config } from "./config/env";
+
 
 export default defineConfig({
   globalSetup: require.resolve("./globalSetup"),
@@ -43,7 +44,7 @@ export default defineConfig({
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     launchOptions: {
-      slowMo: process.env.CI ? 0 : 1000,
+      slowMo: process.env.CI ? 0 : 0,
     },
   },
   projects: [
